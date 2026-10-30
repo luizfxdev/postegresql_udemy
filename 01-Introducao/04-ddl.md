@@ -20,19 +20,19 @@ Ordem importa: crie primeiro as tabelas **referenciadas** (`categorias`, `fornec
 ```sql
 CREATE TABLE categorias (
     id    SERIAL PRIMARY KEY,
-    nome  VARCHAR(60) NOT NULL UNIQUE
+    nome  VARCHAR(50) NOT NULL UNIQUE
 );
 
 CREATE TABLE fornecedores (
     id      SERIAL PRIMARY KEY,
-    nome    VARCHAR(100) NOT NULL,
+    nome    VARCHAR(50) NOT NULL,
     cidade  VARCHAR(60),
     pais    VARCHAR(40)
 );
 
 CREATE TABLE clientes (
     id            SERIAL PRIMARY KEY,
-    nome          VARCHAR(100) NOT NULL,
+    nome          VARCHAR(50) NOT NULL,
     cidade        VARCHAR(60),
     pais          VARCHAR(40)
 );
@@ -50,7 +50,7 @@ CREATE TABLE clientes (
 ```sql
 CREATE TABLE produtos (
     id             SERIAL PRIMARY KEY,
-    nome           VARCHAR(100) NOT NULL,
+    nome           VARCHAR(50) NOT NULL,
     descricao      TEXT,
     categoria_id   INT REFERENCES categorias(id),
     fornecedor_id  INT REFERENCES fornecedores(id),
@@ -61,7 +61,7 @@ CREATE TABLE produtos (
 
 CREATE TABLE motoristas (
     id             SERIAL PRIMARY KEY,
-    nome           VARCHAR(100) NOT NULL,
+    nome           VARCHAR(50) NOT NULL,
     contratado_em  DATE,
     supervisor_id  INT REFERENCES motoristas(id)     -- NULL = não tem chefe
 );
